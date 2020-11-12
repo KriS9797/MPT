@@ -1,0 +1,30 @@
+mar@mar-VirtualBox:~$ sudo mn --custom Downloads/topology.py --topo mytopo
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+h1 h2 h3 h4 h5 h6 h7 h8 h9 
+*** Adding switches:
+s1 
+*** Adding links:
+(h1, s1) (h2, s1) (h3, s1) (h4, s1) (h5, s1) (h6, s1) (s1, h7) (s1, h8) (s1, h9) 
+*** Configuring hosts
+h1 h2 h3 h4 h5 h6 h7 h8 h9 
+*** Starting controller
+c0 
+*** Starting 1 switches
+s1 ...
+*** Starting CLI:
+mininet> net
+h1 h1-eth0:s1-eth1
+h2 h2-eth0:s1-eth2
+h3 h3-eth0:s1-eth3
+h4 h4-eth0:s1-eth4
+h5 h5-eth0:s1-eth5
+h6 h6-eth0:s1-eth6
+h7 h7-eth0:s1-eth7
+h8 h8-eth0:s1-eth8
+h9 h9-eth0:s1-eth9
+s1 lo:  s1-eth1:h1-eth0 s1-eth2:h2-eth0 s1-eth3:h3-eth0 s1-eth4:h4-eth0 s1-eth5:h5-eth0 s1-eth6:h6-eth0 s1-eth7:h7-eth0 s1-eth8:h8-eth0 s1-eth9:h9-eth0
+c0
+
+
