@@ -9,6 +9,7 @@ topology enables one to pass in '--topo=mytopo' from the command line.
 """
 
 from mininet.topo import Topo
+from mininet.link import TCLink
 
 class MyTopo( Topo ):
     "Simple topology example."
@@ -32,15 +33,15 @@ class MyTopo( Topo ):
         switch = self.addSwitch( 's1' )
 
         # Add links
-        self.addLink( host_a1, switch )
-        self.addLink( host_a2, switch )
-        self.addLink( host_a3, switch )
-        self.addLink( host_1, switch )
-        self.addLink( host_2, switch )
-        self.addLink( host_3, switch ) 
-        self.addLink( switch, server_1 )
-        self.addLink( switch, server_2 )
-        self.addLink( switch, server_3 )
+        self.addLink( host_a1, switch, cls=TCLink, bw=2)
+        self.addLink( host_a2, switch, cls=TCLink, bw=2)
+        self.addLink( host_a3, switch, cls=TCLink, bw=2)
+        self.addLink( host_1, switch, cls=TCLink, bw=0.2)
+        self.addLink( host_2, switch, cls=TCLink, bw=0.2)
+        self.addLink( host_3, switch, cls=TCLink, bw=0.2) 
+        self.addLink( switch, server_1, cls=TCLink, bw=0.5)
+        self.addLink( switch, server_2, cls=TCLink, bw=0.5)
+        self.addLink( switch, server_3, cls=TCLink, bw=0.5)
 
 
 
