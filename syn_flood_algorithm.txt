@@ -1,0 +1,29 @@
+input : packet_in arrived from the OpenFlow Switched
+output: action to carry out
+Data: SYN_Received, SYNACK_Received, Friendly_Hosts, FlagAttack
+
+if no FlagAttack and packet_in protocol is TCP then
+
+  if packet_in is SYN message then
+     Add to SYN_Received dictionary, with index = IP source and value = seq and ack
+
+  else if packet_in is SYN ACK message then
+ 
+       if packet_in destination IP is in SYN_Received and ack + 1 = seq SYNACK_Received then 
+          Add to SYNACK_Received dictionary, with index = IP destination and value = seq and ack
+
+  else if packet_in is ACK message then
+       
+       if packet in source IP is in SYNACK_Received and ack + 1 = seq SYN_Received then
+          Add to Friendly_Hosts dictionary, with index = IP  destination and value = port
+          Install flow entry in OpenFlow Switch in both directions
+ end
+ 
+ else if FlagAttack and packet_in protocol is TCP then
+   if packet_in IP is in Friendly_Hosts then
+      Forward packet_in;
+ 
+   else Drop packet in ;
+  end
+  else Forward packet_in;
+end
