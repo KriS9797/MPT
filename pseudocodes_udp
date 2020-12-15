@@ -1,0 +1,48 @@
+#Defense mechanism
+if frequent occurrences of unknown destination address and
+the number of ARP request packets is large
+ if received packets (r) > sent packets (t) then
+  if the number of mismatches between a destination address and a flow
+   table entry is high then
+   start dropping packets
+ else
+  if the network has recently been attacked then
+   update the active flow rule
+
+#User datagram protocol (UDP) Defense Section
+Activation of the detection mechanism to check on network conditions
+r = number of packets received by the port
+t = number of packets sent by the port
+if r > t then
+ increased rules and drop packet
+else
+ if packet per second abnormal then
+  return detection mechanism.
+
+#Bandwidth monitoring section code
+rx_bytes = 0 (received bytes)
+tx_bytes = 0 (transmitted bytes)
+rx_band = 0 (receiving bandwidth)
+tx_band = 0 (transmitting bandwidth from a given port)
+Calculate current flow rate
+Update rx_bytes; tx_bytes; rx_band; tx_band
+Give traffic situation for the port.
+
+#Analysis of packet IP addresses
+Get packet content
+x = dst_ip
+int y # number y is the number for counting
+if the port is abnormal
+ if x is in the TABLE
+  y = y − 1
+ else add x to the TABLE
+   y = y + 1
+ 
+#Release rules used to block abnormal port packets
+y = packet number
+P = set of all packets
+if y > 500 then
+ for all p in P do
+  if address of p has been recorded in the flow table
+  else
+   drop packet
